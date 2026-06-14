@@ -1,0 +1,507 @@
+<head>
+<title>mainland</title>
+<link rel="icon" href="nn.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+    body{
+        position: absolute;
+        margin: 1em;
+    }
+    button {
+        all: unset;
+        cursor: pointer;
+    }
+    .block{
+        position: absolute;
+        overflow: hidden;
+        background-color: rgb(255, 0, 0);
+    }
+    .cassetesize{
+        cursor: pointer;
+        position: relative;
+        top: 35px;
+        width: 120px;
+        height: 60px;
+        rotate: -45deg;
+    }
+    .side{
+        position: absolute;
+        background-color: rgb(37, 51, 65);
+        width: 14px;
+        height: 60px;
+        border-radius: 3px;
+        corner-shape: bevel;
+    }
+    .L{
+        left: 0px;
+    }
+    .R{
+        right: 0px;
+    }
+    .groove{
+        height: 54px;
+        width: 120px;
+        bottom: 0px;
+    }
+    .main{
+        height: 60px;
+        width: 90px;
+        left: 15px;
+    }
+    .cl{
+        top: 22px;
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background-color: azure;
+        border: 2px solid rgb(19, 19, 43);
+        border-radius: 100%;
+    }
+    .A{
+        left: 20px;
+    }
+    .B{
+        right: 20px;
+    }
+    .md{
+        top:22px;
+        position: absolute;
+        border-radius: 10px;
+        width: 40px;
+        height: 15px;
+        left:40px;
+        background-color:rgb(19, 19, 43);
+    }
+    .nametag{
+        top: 45px;
+        position: absolute;
+        border-radius: 10px;
+        width: 80px;
+        height: 10px;
+        left:20px;
+        color: aliceblue;
+        background-color:rgb(19, 19, 43);
+        padding-left: 1em;
+        font-size:x-small;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(3,80px);
+        gap:1em;
+    }
+    .cassetesocket{
+        position: absolute;
+        top: 230px;
+        width: 60px;
+        height: 230px;
+        background-color: rgb(75, 75, 122);
+        border-radius: 10px 2px 2px 2px;
+        corner-shape: bevel;
+    }
+    .cssocketlightL{
+        position: absolute;
+        width: 7px;
+        height: 230px;
+        background-color:rgb(118, 118, 172);
+        background-image:linear-gradient(rgb(151, 151, 201),rgb(118, 118, 172),rgb(118, 118, 172));
+    }
+    .cssocketlightU{
+        position: absolute;
+        width: 60px;
+        height: 7px;
+        background-color:rgb(118, 118, 172);
+        background-image:linear-gradient(90deg,rgb(151, 151, 201),rgb(118, 118, 172),rgb(118, 118, 172));
+    }
+    .cssocketlightC{
+        position: absolute;
+        border-bottom: 10px solid rgb(233, 226, 255);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        width: 8px;
+        height: 8px;
+        rotate: 135deg;
+    }
+    .eject{
+        position: absolute;
+        bottom: 10px;
+        left: 18px;
+        height: 5px;
+        width: 30px;
+        justify-self: center;
+        text-align: center;
+        border-radius: 2px;
+        border-width: 0;
+        padding-bottom: 5px;
+        corner-shape:bevel;
+        color: rgb(201, 201, 233);
+        background-color: rgb(112, 112, 163);
+    }
+    .player{
+        position: absolute;
+        top: 190px;
+        left: 60px;
+        width: 180px;
+        height: 200px;
+        background-color: rgb(48, 45, 77);
+        border-radius: 10px 10px 2px 2px;
+        corner-shape: bevel;
+    }
+    .playershadow{
+        position: absolute;
+        bottom: 0px;
+        left:25px;
+        width: 130px;
+        height: 40px;
+        border-radius: 5px 5px 0px 0px;
+        corner-shape: bevel;
+        background-color: rgb(31, 28, 55);
+        background-image:linear-gradient(rgb(31, 28, 55),rgb(44, 41, 68));
+    }
+    .edgeshadowbt{
+        overflow: hidden;
+         position: absolute;
+        bottom: 0px;
+        left:23px;
+        width: 134px;
+        height: 42px;
+        border-radius: 5px 5px 0px 0px;
+        corner-shape: bevel;
+        background-color: rgb(31, 28, 55);
+        background-image:linear-gradient(90deg,rgb(36, 30, 63),rgb(48, 45, 77));
+    }
+    .edgeshadowcn{
+    position: absolute;
+    bottom: 28px;
+    left: 2px;
+    border-bottom: 6px solid rgb(30, 28, 50);
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    width: 6px;
+    height: 8px;
+    rotate: 135deg;
+    }
+    .edgeshadowR{
+        position: absolute;
+        width: 2px;
+        height: 34px;
+        bottom: 0px;
+        right: 23px;
+        background-color: rgb(75, 71, 110);
+        background-image: linear-gradient(rgb(116, 112, 150),rgb(116, 112, 150),rgb(75, 70, 114));
+    }
+    .edgecnR{
+        position: relative;
+        width: 1px;
+        height: 4px;
+        background-color: rgb(116, 112, 150);
+        background-image: linear-gradient(rgb(116, 112, 150),rgb(116, 112, 150),rgb(75, 70, 114));
+
+    }
+    .cntr{
+        position: absolute;
+        bottom: 35px;
+        right: 24px;
+        display: flex;
+        rotate: 45deg;
+        gap: 0.5px;
+    }
+    .edgeLshadow{
+        position: absolute;
+        width: 2px;
+        height: 185px;
+        bottom: 0px;
+        background-color: rgb(96, 92, 126);
+        background-image: linear-gradient(rgb(178, 173, 230),rgb(96, 92, 126));
+    }
+    .flip{
+        right: 0;
+        background-color: rgb(28, 26, 50);
+        background-image: linear-gradient(rgb(28, 26, 50),rgb(28, 26, 50));
+    }
+    .up{
+        height: 2px;
+        width: 160px;
+        top:0;
+        left: 10px;
+        background-image: linear-gradient(90deg,rgb(178, 173, 230),rgb(96, 92, 126));
+    }
+    .edgeCshadow{
+        position: relative;
+        width: 8px;
+        height: 1px;
+        background-color: rgb(178, 173, 230);
+    }
+    .edgelong{
+        width: 12px;
+    }
+    .edgecontain{
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        gap: 1px;
+        
+    }
+    .pos1{
+        top:0px;
+        left:3px;
+        rotate: 45deg;
+    }
+     .pos2{
+    top:2px;
+    left:0px;
+    transform: skew(-45deg);
+    }
+    .buttoning{
+        display: flex;
+        gap: 1px;
+        position: absolute;
+        top: 350px;
+        left:90px;
+    }
+    .bt{
+        width: 38px;
+        height: 120px;
+        border-radius: 0px 0px 15px 0px;
+        corner-shape: bevel;
+        background-color: rgb(255, 102, 0);
+    }
+    .bt:active{
+        background-color: rgb(132, 53, 0);
+    }
+    .printer{
+        position: absolute;
+        top:0;
+        left:400px;
+        width: 500px;
+        height: 120px;
+    }
+    .clr{
+        position: absolute;
+        right:0px;
+        width: 500px;
+        height: 90px;
+        background-color: aqua;
+    }
+    .clrl{
+        position: absolute;
+        top:0;
+        right:0px;
+        width: 500px;
+        height: 50px;
+        background-color: rgb(30, 0, 255);
+    }
+    .lightin{
+            position: absolute;
+        left:25px;
+        bottom:0px;
+        width: 450px;
+        height: 40px;
+        background-color: brown;
+        background-image: linear-gradient(135deg,rgb(92, 57, 48),rgb(100, 37, 22));
+    }
+    .edgeR{
+        width:2px;
+        height: 1px;
+        background-color: rgb(204, 162, 152);
+    }
+    .pos3{
+        top:2px;
+        left:4px;
+        transform:skewY(-30deg);
+        gap:2px;
+    }
+    .shadder{
+        position: absolute;
+        top: 600px;
+        left:400px;
+        width: 500px;
+        height: 80px;
+        background-color: rgb(100, 37, 22);
+    }
+    .selector{
+        position: absolute;
+        top: 100px;
+        left:900px;
+        width: 40px;
+        height: 520px;
+    }
+    .paperblock{
+        position: absolute;
+        top:60px;
+        left:430px;
+        width: 440px;
+        height: 600px;
+        overflow: hidden;
+        background-color: rebeccapurple;
+    }
+    .paper{
+        position: absolute;
+        top:-600px;
+        left:20px;
+        width: 400px;
+        height: 600px;
+        background-color: rgb(194, 202, 209);
+    }
+
+</style>
+</head>
+<body>
+    <div class="grid">
+<div class="block cassetesize" id="st">
+<div class="side L"></div>
+<div class="side R"></div>
+<div class="side groove"></div>
+<div class="side main"></div>
+<div class="cl A"> </div>
+<div class="cl B"> </div>
+<div class="md"></div>
+<div class="nametag">my profile</div>
+</div>
+<div class="block cassetesize">
+<div class="side L"></div>
+<div class="side R"></div>
+<div class="side groove"></div>
+<div class="side main"></div>
+<div class="cl A"> </div>
+<div class="cl B"> </div>
+<div class="md"></div>
+<div class="nametag">coming soon</div>
+</div>
+<div class="block cassetesize">
+<div class="side L"></div>
+<div class="side R"></div>
+<div class="side groove"></div>
+<div class="side main"></div>
+<div class="cl A"> </div>
+<div class="cl B"> </div>
+<div class="md"></div>
+<div class="nametag">coming soon</div>
+</div>
+    </div>
+<div class="block cassetesocket">
+    <button class="eject" id="ej"><i class="material-icons" style="font-size: 10px;">&#xe8fb;</i></button>
+    <div class="cssocketlightL"></div>
+    <div class="cssocketlightU"></div>
+    <div class="cssocketlightC"></div>
+</div>
+<div class="block player">
+    <div class="edgeshadowbt">
+        <div class="edgeshadowcn"></div>
+    </div>
+    <div class="edgeshadowR"></div>
+    <div class="cntr">
+        <div class="edgecnR"></div>
+        <div class="edgecnR"></div>
+        <div class="edgecnR"></div>
+        <div class="edgecnR"></div>
+        <div class="edgecnR"></div>
+    </div>
+    <div class="playershadow"></div>
+    <div class="edgeLshadow"></div>
+    <div class="edgeLshadow up"></div>
+    <div class="edgeLshadow flip"></div>
+    <div class="edgecontain pos1">
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+        <div class="edgeCshadow"></div>
+    </div>
+    <div class="edgecontain pos2">
+        <div class="edgeCshadow edgelong"></div>
+        <div class="edgeCshadow edgelong"></div>
+        <div class="edgeCshadow edgelong"></div>
+        <div class="edgeCshadow edgelong"></div>
+        <div class="edgeCshadow edgelong"></div>
+        <div class="edgeCshadow edgelong"></div>
+    </div>
+
+</div>
+<div class="block buttoning">
+    <button class="bt" id="sd">play</button>
+    <button class="bt">soon</button>
+    <button class="bt">soon</button>
+</div>
+<div class="paperblock">
+    <div class="paper" id="paper">
+    <br>
+    <h3>profile</h3>
+    <p>Name: Siwadol Rukchart<br>
+        ID : 6812732126<br>
+        Age: 21<br>
+        Hobby: Draw, Sclupt 3d Model , learn chemistry <br>, making 8bits computer using BJT 2n2222 <br>, Asembly toy model<br>
+        my Favorite food: suki roll <br>
+        What i can do: Draw, Sclupt 3d Model<br>
+    </p>
+</div>
+</div>
+
+<div class="block printer">
+    <div class="clr"></div>
+    <div class="clrl"></div>
+    <div class="lightin"></div>
+    <p style="font-size: large; position: absolute;">under construct</p>
+</div>
+<div class="block shadder">
+    <p style="font-size: large; position: absolute;">under construct</p>
+</div>
+<div class="block selector">
+    <p style="font-size: large; position: absolute;">under construct</p>
+</div>
+<h1 style="position: absolute;top: 500px; left: 25px;" id="mockup">idle</h1>
+<script>
+    let insert = false;
+    let play = false;
+    document.getElementById("st").addEventListener("click",set);
+    document.getElementById("ej").addEventListener("click",ejector);
+    document.getElementById("sd").addEventListener("click",slide);
+function set(){
+if(insert){
+    document.getElementById("mockup").innerHTML="*already insert*";
+    la = setTimeout(() => document.getElementById("mockup").innerHTML="stand by" ,1000);
+}
+else{ 
+    insert = true
+    document.getElementById("mockup").innerHTML="*play insert cassete animation*";
+    setTimeout(() => document.getElementById("mockup").innerHTML="stand by" ,1000);
+
+    return
+}
+}
+function ejector(){
+if(insert){
+    insert = false;
+    if(play){
+    setTimeout(() => document.getElementById("paper").style.top = " 100px" ,1000);
+    setTimeout(() => document.getElementById("paper").style.top = "200px" ,1500);
+    setTimeout(() => document.getElementById("paper").style.top = "400px" ,2000);
+    setTimeout(() => document.getElementById("paper").style.top = "-600px" ,2500);
+    }
+    document.getElementById("mockup").innerHTML="*play eject animation*";
+    setTimeout(() => document.getElementById("mockup").innerHTML="idle" ,1000);
+    play=false
+}
+else {
+    document.getElementById("mockup").innerHTML="*play sound of button click*";
+        setTimeout(() => document.getElementById("mockup").innerHTML="idle" ,1000);
+
+        return
+}
+}
+function slide(){
+    if(insert&&!play){
+        play=true
+    setTimeout(() => document.getElementById("paper").style.top = "-400px" ,1000);
+    setTimeout(() => document.getElementById("paper").style.top = "-200px" ,1500);
+    setTimeout(() => document.getElementById("paper").style.top = "-100px" ,2000);
+    setTimeout(() => document.getElementById("paper").style.top = "20px" ,2500);
+    }
+    else{document.getElementById("mockup").innerHTML="*do noting*";
+        setTimeout(() => document.getElementById("mockup").innerHTML="idle" ,1000);}
+}
+</script>
+</body>
